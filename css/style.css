@@ -1,0 +1,82 @@
+
+/* =========================================
+   1. CSS RESET BASE
+   ========================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Impedisce al padding di sballare le dimensioni dei blocchi */
+    margin: 0;
+    padding: 0;
+}
+
+/* Rimuove i pallini di default dalle liste (ti servirà per il menù della navbar) */
+ul, ol {
+    list-style: none;
+}
+
+/* Rimuove lo stile di default dei link (niente blu e sottolineato standard) */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Rende le immagini responsive di default */
+img {
+    max-width: 100%;
+    display: block;
+}/* 1. Definiamo le misure e i colori di base (Design Tokens) */
+:root {
+    --bg-color: #ffffff; /* Un grigio scurissimo, quasi nero, elegante */
+    --grid-line-color: rgba(0, 0, 0, 0.1); /* Bianco con solo il 5% di opacità per un effetto sottile */
+    --grid-size: 24px; /* La dimensione esatta di un singolo quadretto. Puoi cambiarla in base a Figma! */
+}
+
+/* 2. Resettiamo la pagina base */
+body {
+    background-color: var(--bg-color); /* Applica il colore di fondo scuro */
+    color: #000000;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    min-height: 100vh; /* Forza il body a coprire sempre il 100% dell'altezza dello schermo */
+    
+    /* 3. IL TRUCCO DELLA GRIGLIA A QUADRETTI */
+    background-image: 
+        /* Disegna la linea orizzontale spessa 1px */
+        linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+        /* Disegna la linea verticale spessa 1px ruotata di 90 gradi */
+        linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+    
+    /* 4. Diciamo al browser ogni quanto ripetere le linee */
+    background-size: var(--grid-size) var(--grid-size);
+
+    /* =========================================
+   2. NAVBAR & HEADER
+   ========================================= */
+.site-header {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex; /* Il trucco che mette tutto sulla stessa riga */
+    justify-content: space-between; /* Spinge i loghi ai lati e il menu al centro */
+    align-items: center; /* Allinea verticalmente tutto al centro */
+    padding: 0 24px; /* Spazio ai lati (puoi regolarlo in base ai tuoi quadretti) */
+    height: 96px; /* Altezza della barra nera (regola in base al tuo Figma) */
+    gap: 30px;
+}
+
+/* Regole per la lista del menu */
+.desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 32px; /* Distanza tra le singole parole WHO | WORKS | NEWS */
+}
+
+/* Abbassiamo leggermente l'opacità delle stanghette verticali per farle sembrare più eleganti */
+.desktop-nav .separator {
+    color: rgba(255, 255, 255, 1);
+}
+
+.logo-right img {
+    transform: scaleX(-1);
+
+}
+}
