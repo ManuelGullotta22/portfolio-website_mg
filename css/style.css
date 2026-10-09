@@ -48,7 +48,7 @@ body {
     
     /* 4. Diciamo al browser ogni quanto ripetere le linee */
     background-size: var(--grid-size) var(--grid-size);
-
+}
     /* =========================================
    2. NAVBAR & HEADER
    ========================================= */
@@ -56,27 +56,205 @@ body {
     background-color: #000000;
     color: #ffffff;
     display: flex; /* Il trucco che mette tutto sulla stessa riga */
-    justify-content: space-between; /* Spinge i loghi ai lati e il menu al centro */
     align-items: center; /* Allinea verticalmente tutto al centro */
     padding: 0 24px; /* Spazio ai lati (puoi regolarlo in base ai tuoi quadretti) */
     height: 96px; /* Altezza della barra nera (regola in base al tuo Figma) */
-    gap: 30px;
+    gap: 200px;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 /* Regole per la lista del menu */
 .desktop-nav ul {
     display: flex;
     align-items: center;
-    gap: 32px; /* Distanza tra le singole parole WHO | WORKS | NEWS */
+    gap: 140px; /* Distanza tra le singole parole WHO | WORKS | NEWS */
 }
 
 /* Abbassiamo leggermente l'opacità delle stanghette verticali per farle sembrare più eleganti */
 .desktop-nav .separator {
     color: rgba(255, 255, 255, 1);
 }
+/* Stile base dei link: creiamo un'area circolare invisibile */
+.desktop-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px; /* Larghezza del cerchio (regolala se i testi sono più lunghi) */
+    height: 64px; /* Altezza del cerchio */
+    border: 1px solid transparent; /* Bordo invisibile di default */
+    border-radius: 50%; /* Trasforma il quadrato in un cerchio perfetto */
+    transition: border-color 0.3s ease; /* Rende la comparsa del bordo fluida */
+}
+
+/* Effetto Hover: coloriamo il bordo di bianco */
+.desktop-nav a:hover {
+    border-color: #ffffff;
+}
+
+/* Assicuriamoci che i separatori | non vengano deformati */
+.desktop-nav .separator {
+    color: rgba(255, 255, 255, 1);
+    margin: 0 -20px; /* Stringe un po' lo spazio vuoto lasciato dai cerchi larghi */
+}
 
 .logo-right img {
     transform: scaleX(-1);
 
 }
+/* =========================================
+   3. MAIN LAYOUT (GRID STACKING)
+   ========================================= */
+.hero-puzzle {
+    display: grid;
+    /* padding: SOPRA DESTRA SOTTO SINISTRA */
+    /* Diamo un quadretto di spazio esatto in alto e in basso */
+    padding: var(--grid-size) 0 var(--grid-size) 0; 
+    width: 100%;
+}
+
+/* Sovrapponiamo i 3 blocchi assegnandoli tutti all'identica cella (Riga 1 / Colonna 1) */
+.column-left, .column-center, .column-right {
+    grid-area: 1 / 1;
+}
+
+/* Il blocco grigio si posiziona normalmente, subendo il padding */
+.hero-puzzle img {
+    grid-area: 1 / 1;
+    width: 100%;
+    display: block;
+}
+
+/* La linea nera si sovrappone, ma la tiriamo su di un quadretto per agganciarla all'header */
+.hero-puzzle svg {
+    grid-area: 1 / 1;
+    width: 100%;
+    display: block;
+    margin-top: calc(-1 * var(--grid-size)); /* Il trucco per risalire il padding */
+    position: relative;
+    z-index: 2; /* Ci assicuriamo che si disegni SOPRA il blocco grigio */
+}
+/* =========================================
+   4. ANIMAZIONI HOME PAGE
+   ========================================= */
+
+/* 1. Creiamo la sequenza di movimento (Keyframes) */
+@keyframes slideInPuzzle {
+    from {
+        opacity: 0;
+        transform: translateX(80px); /* Parte spostato di 80px verso destra */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Raggiunge la sua posizione naturale di incastro */
+    }
+}
+
+/* 2. Diciamo ai tre blocchi di usare questa animazione */
+.column-left, .column-center, .column-right {
+    opacity: 0; /* Partono invisibili di default */
+    /* durata: 0.8s | curva di accelerazione: ease-out | forwards: blocca l'oggetto al 100% dell'animazione (visibile) */
+    animation: slideInPuzzle 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    grid-area: 1 / 1;
+    
+    /* NUOVO: Trasformiamo anche le colonne in griglie per impilare img e svg */
+    display: grid;
+}
+
+/* 3. Diamo gli ordini di partenza sfalsati (da destra a sinistra) */
+.column-right {
+    animation-delay: 1s; /* Il primo a partire */
+}
+
+.column-center {
+    animation-delay: 0.6s; /* Parte poco prima che finisca il destro */
+}
+
+.column-left {
+    animation-delay: 0.2s; /* L'ultimo a chiudere il puzzle */
+}
+/* =========================================
+   5. ANIMAZIONE LINEE (TRIM PATHS)
+   ========================================= */
+
+/* 1. Prepariamo i tracciati (nascondendoli spingendo l'offset all'indietro) */
+.hero-puzzle svg path {
+    stroke-dasharray: 4000; /* Un valore abbastanza grande da coprire tutta la lunghezza */
+    stroke-dashoffset: 4000; /* Spinge la linea fuori dalla vista */
+    /* L'animazione durerà 1.5 secondi con una curva fluida */
+    animation: drawLine 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 2. Il Keyframe che disegna fisicamente la linea */
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0; /* Riporta la linea alla sua posizione completa */
+    }
+}
+
+/* 3. Temporizziamo le linee per farle partire DOPO l'ingresso dei blocchi grigi */
+.column-left svg path {
+    animation-delay: 0.8s; /* Il blocco sinistro entra a 0.2s e ci mette 0.8s. La linea parte a 0.8s */
+}
+.column-center svg path {
+    animation-delay: 1.2s; /* Parte quando il blocco centrale è in posizione */
+}
+.column-right svg path {
+    animation-delay: 1.6s; /* Parte alla fine, chiudendo l'animazione */
+}
+
+/* 4. Il tocco di classe: facciamo comparire i pallini neri solo alla fine della corsa */
+.hero-puzzle svg circle {
+    opacity: 0; /* Inizialmente invisibili */
+    animation: popIn 0.6s ease-in-out forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Calcoliamo il tempo: Ritardo della linea + durata della linea (1.5s) */
+.column-left svg circle { animation-delay: 1s; } 
+.column-center svg circle { animation-delay: 1.4s; }
+.column-right svg circle { animation-delay: 1.8s; }
+
+/* IMPORTANTE: Per far funzionare lo scale() sul pallino SVG dal suo centro */
+.hero-puzzle svg circle {
+    transform-origin: center;
+    transform-box: fill-box;
+}
+/* =========================================
+   6. INTERATTIVITA' SVG
+   ========================================= */
+
+/* 1. Rendiamo "trasparenti al mouse" le colonne intere e l'SVG base per non bloccare i click sottostanti */
+.column-left, .column-center, .column-right,
+.hero-puzzle svg {
+    pointer-events: none;
+}
+
+/* 2. Riattiviamo il click in modo esplicito SOLO per il link dentro l'SVG */
+.hero-puzzle svg a {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* 3. Usiamo "all" per assicurarci che i tracciati vettoriali registrino il mouse con precisione */
+.hero-puzzle svg a path,
+.hero-puzzle svg a circle {
+    pointer-events: all;
+}
+
+/* 4. Effetto hover: ingrassiamo SOLO la linea nera (ignorando quella invisibile spessa) */
+.hero-puzzle svg a:hover path[stroke="black"] {
+    stroke-width: 6px; 
+    transition: stroke-width 0.2s ease;
+}
+
+.hero-puzzle svg a:hover circle {
+    transform: scale(1.2); 
+    transition: transform 0.2s ease;
 }
