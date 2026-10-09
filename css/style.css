@@ -1,140 +1,155 @@
-
 /* =========================================
    1. CSS RESET BASE
    ========================================= */
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Impedisce al padding di sballare le dimensioni dei blocchi */
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box; /* Impedisce al padding di sballare le dimensioni dei blocchi */
+  margin: 0;
+  padding: 0;
 }
 
 /* Rimuove i pallini di default dalle liste (ti servirà per il menù della navbar) */
-ul, ol {
-    list-style: none;
+ul,
+ol {
+  list-style: none;
 }
 
 /* Rimuove lo stile di default dei link (niente blu e sottolineato standard) */
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Rende le immagini responsive di default */
 img {
-    max-width: 100%;
-    display: block;
-}/* 1. Definiamo le misure e i colori di base (Design Tokens) */
+  max-width: 100%;
+  display: block;
+} /* 1. Definiamo le misure e i colori di base (Design Tokens) */
 :root {
-    --bg-color: #ffffff; /* Un grigio scurissimo, quasi nero, elegante */
-    --grid-line-color: rgba(0, 0, 0, 0.1); /* Bianco con solo il 5% di opacità per un effetto sottile */
-    --grid-size: 24px; /* La dimensione esatta di un singolo quadretto. Puoi cambiarla in base a Figma! */
+  --bg-color: #ffffff; /* Un grigio scurissimo, quasi nero, elegante */
+  --grid-line-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Bianco con solo il 5% di opacità per un effetto sottile */
+  --grid-size: 24px; /* La dimensione esatta di un singolo quadretto. Puoi cambiarla in base a Figma! */
 }
 
 /* 2. Resettiamo la pagina base */
 body {
-    background-color: var(--bg-color); /* Applica il colore di fondo scuro */
-    color: #000000;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    min-height: 100vh; /* Forza il body a coprire sempre il 100% dell'altezza dello schermo */
-    
-    /* 3. IL TRUCCO DELLA GRIGLIA A QUADRETTI */
-    background-image: 
+  background-color: var(--bg-color); /* Applica il colore di fondo scuro */
+  color: #000000;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  min-height: 100vh; /* Forza il body a coprire sempre il 100% dell'altezza dello schermo */
+
+  /* 3. IL TRUCCO DELLA GRIGLIA A QUADRETTI */
+  background-image: 
         /* Disegna la linea orizzontale spessa 1px */
-        linear-gradient(var(--grid-line-color) 1px, transparent 1px),
-        /* Disegna la linea verticale spessa 1px ruotata di 90 gradi */
-        linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
-    
-    /* 4. Diciamo al browser ogni quanto ripetere le linee */
-    background-size: var(--grid-size) var(--grid-size);
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    /* Disegna la linea verticale spessa 1px ruotata di 90 gradi */
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+
+  /* 4. Diciamo al browser ogni quanto ripetere le linee */
+  background-size: var(--grid-size) var(--grid-size);
 }
-    /* =========================================
+/* =========================================
    2. NAVBAR & HEADER
    ========================================= */
 .site-header {
-    background-color: #000000;
-    color: #ffffff;
-    display: flex; /* Il trucco che mette tutto sulla stessa riga */
-    align-items: center; /* Allinea verticalmente tutto al centro */
-    padding: 0 24px; /* Spazio ai lati (puoi regolarlo in base ai tuoi quadretti) */
-    height: 96px; /* Altezza della barra nera (regola in base al tuo Figma) */
-    gap: 200px;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex; /* Il trucco che mette tutto sulla stessa riga */
+  align-items: center; /* Allinea verticalmente tutto al centro */
+  padding: 0 24px; /* Spazio ai lati (puoi regolarlo in base ai tuoi quadretti) */
+  height: 96px; /* Altezza della barra nera (regola in base al tuo Figma) */
+  gap: 200px;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 /* Regole per la lista del menu */
 .desktop-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 140px; /* Distanza tra le singole parole WHO | WORKS | NEWS */
+  display: flex;
+  align-items: center;
+  gap: 140px; /* Distanza tra le singole parole WHO | WORKS | NEWS */
 }
 
 /* Abbassiamo leggermente l'opacità delle stanghette verticali per farle sembrare più eleganti */
 .desktop-nav .separator {
-    color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
 }
 /* Stile base dei link: creiamo un'area circolare invisibile */
 .desktop-nav a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px; /* Larghezza del cerchio (regolala se i testi sono più lunghi) */
-    height: 64px; /* Altezza del cerchio */
-    border: 1px solid transparent; /* Bordo invisibile di default */
-    border-radius: 50%; /* Trasforma il quadrato in un cerchio perfetto */
-    transition: border-color 0.3s ease; /* Rende la comparsa del bordo fluida */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; /* Larghezza del cerchio (regolala se i testi sono più lunghi) */
+  height: 64px; /* Altezza del cerchio */
+  border: 1px solid transparent; /* Bordo invisibile di default */
+  border-radius: 50%; /* Trasforma il quadrato in un cerchio perfetto */
+  transition: border-color 0.3s ease; /* Rende la comparsa del bordo fluida */
 }
 
 /* Effetto Hover: coloriamo il bordo di bianco */
 .desktop-nav a:hover {
-    border-color: #ffffff;
+  border-color: #ffffff;
 }
 
 /* Assicuriamoci che i separatori | non vengano deformati */
 .desktop-nav .separator {
-    color: rgba(255, 255, 255, 1);
-    margin: 0 -20px; /* Stringe un po' lo spazio vuoto lasciato dai cerchi larghi */
+  color: rgba(255, 255, 255, 1);
+  margin: 0 -20px; /* Stringe un po' lo spazio vuoto lasciato dai cerchi larghi */
 }
 
 .logo-right img {
-    transform: scaleX(-1);
-
+  transform: scaleX(-1);
+}
+/* Stato Attivo: Sottolineatura per indicare la pagina corrente */
+.desktop-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px; /* Distanza elegante dalla parola, per non tagliare le lettere */
+  text-decoration-thickness: 2px; /* Spessore che richiama le linee del tuo design */
+  text-decoration-color: #ffffff;
 }
 /* =========================================
    3. MAIN LAYOUT (GRID STACKING)
    ========================================= */
 .hero-puzzle {
-    display: grid;
-    /* padding: SOPRA DESTRA SOTTO SINISTRA */
-    /* Diamo un quadretto di spazio esatto in alto e in basso */
-    padding: var(--grid-size) 0 var(--grid-size) 0; 
-    width: 100%;
+  display: grid;
+  /* padding: SOPRA DESTRA SOTTO SINISTRA */
+  /* Diamo un quadretto di spazio esatto in alto e in basso */
+  padding: var(--grid-size) 0 var(--grid-size) 0;
+  width: 100%;
 }
 
 /* Sovrapponiamo i 3 blocchi assegnandoli tutti all'identica cella (Riga 1 / Colonna 1) */
-.column-left, .column-center, .column-right {
-    grid-area: 1 / 1;
+.column-left,
+.column-center,
+.column-right {
+  grid-area: 1 / 1;
 }
 
 /* Il blocco grigio si posiziona normalmente, subendo il padding */
 .hero-puzzle img {
-    grid-area: 1 / 1;
-    width: 100%;
-    display: block;
+  grid-area: 1 / 1;
+  width: 100%;
+  display: block;
 }
 
 /* La linea nera si sovrappone, ma la tiriamo su di un quadretto per agganciarla all'header */
 .hero-puzzle svg {
-    grid-area: 1 / 1;
-    width: 100%;
-    display: block;
-    margin-top: calc(-1 * var(--grid-size)); /* Il trucco per risalire il padding */
-    position: relative;
-    z-index: 2; /* Ci assicuriamo che si disegni SOPRA il blocco grigio */
+  grid-area: 1 / 1;
+  width: 100%;
+  display: block;
+  margin-top: calc(
+    -1 * var(--grid-size)
+  ); /* Il trucco per risalire il padding */
+  position: relative;
+  z-index: 2; /* Ci assicuriamo che si disegni SOPRA il blocco grigio */
 }
 /* =========================================
    4. ANIMAZIONI HOME PAGE
@@ -142,38 +157,42 @@ body {
 
 /* 1. Creiamo la sequenza di movimento (Keyframes) */
 @keyframes slideInPuzzle {
-    from {
-        opacity: 0;
-        transform: translateX(80px); /* Parte spostato di 80px verso destra */
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0); /* Raggiunge la sua posizione naturale di incastro */
-    }
+  from {
+    opacity: 0;
+    transform: translateX(80px); /* Parte spostato di 80px verso destra */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(
+      0
+    ); /* Raggiunge la sua posizione naturale di incastro */
+  }
 }
 
 /* 2. Diciamo ai tre blocchi di usare questa animazione */
-.column-left, .column-center, .column-right {
-    opacity: 0; /* Partono invisibili di default */
-    /* durata: 0.8s | curva di accelerazione: ease-out | forwards: blocca l'oggetto al 100% dell'animazione (visibile) */
-    animation: slideInPuzzle 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
-    grid-area: 1 / 1;
-    
-    /* NUOVO: Trasformiamo anche le colonne in griglie per impilare img e svg */
-    display: grid;
+.column-left,
+.column-center,
+.column-right {
+  opacity: 0; /* Partono invisibili di default */
+  /* durata: 0.8s | curva di accelerazione: ease-out | forwards: blocca l'oggetto al 100% dell'animazione (visibile) */
+  animation: slideInPuzzle 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  grid-area: 1 / 1;
+
+  /* NUOVO: Trasformiamo anche le colonne in griglie per impilare img e svg */
+  display: grid;
 }
 
 /* 3. Diamo gli ordini di partenza sfalsati (da destra a sinistra) */
 .column-right {
-    animation-delay: 1s; /* Il primo a partire */
+  animation-delay: 1s; /* Il primo a partire */
 }
 
 .column-center {
-    animation-delay: 0.6s; /* Parte poco prima che finisca il destro */
+  animation-delay: 0.6s; /* Parte poco prima che finisca il destro */
 }
 
 .column-left {
-    animation-delay: 0.2s; /* L'ultimo a chiudere il puzzle */
+  animation-delay: 0.2s; /* L'ultimo a chiudere il puzzle */
 }
 /* =========================================
    5. ANIMAZIONE LINEE (TRIM PATHS)
@@ -181,80 +200,304 @@ body {
 
 /* 1. Prepariamo i tracciati (nascondendoli spingendo l'offset all'indietro) */
 .hero-puzzle svg path {
-    stroke-dasharray: 4000; /* Un valore abbastanza grande da coprire tutta la lunghezza */
-    stroke-dashoffset: 4000; /* Spinge la linea fuori dalla vista */
-    /* L'animazione durerà 1.5 secondi con una curva fluida */
-    animation: drawLine 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  stroke-dasharray: 4000; /* Un valore abbastanza grande da coprire tutta la lunghezza */
+  stroke-dashoffset: 4000; /* Spinge la linea fuori dalla vista */
+  /* L'animazione durerà 1.5 secondi con una curva fluida */
+  animation: drawLine 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* 2. Il Keyframe che disegna fisicamente la linea */
 @keyframes drawLine {
-    to {
-        stroke-dashoffset: 0; /* Riporta la linea alla sua posizione completa */
-    }
+  to {
+    stroke-dashoffset: 0; /* Riporta la linea alla sua posizione completa */
+  }
 }
 
 /* 3. Temporizziamo le linee per farle partire DOPO l'ingresso dei blocchi grigi */
 .column-left svg path {
-    animation-delay: 0.8s; /* Il blocco sinistro entra a 0.2s e ci mette 0.8s. La linea parte a 0.8s */
+  animation-delay: 0.8s; /* Il blocco sinistro entra a 0.2s e ci mette 0.8s. La linea parte a 0.8s */
 }
 .column-center svg path {
-    animation-delay: 1.2s; /* Parte quando il blocco centrale è in posizione */
+  animation-delay: 1.2s; /* Parte quando il blocco centrale è in posizione */
 }
 .column-right svg path {
-    animation-delay: 1.6s; /* Parte alla fine, chiudendo l'animazione */
+  animation-delay: 1.6s; /* Parte alla fine, chiudendo l'animazione */
 }
 
 /* 4. Il tocco di classe: facciamo comparire i pallini neri solo alla fine della corsa */
 .hero-puzzle svg circle {
-    opacity: 0; /* Inizialmente invisibili */
-    animation: popIn 0.6s ease-in-out forwards;
+  opacity: 0; /* Inizialmente invisibili */
+  animation: popIn 0.6s ease-in-out forwards;
 }
 
 @keyframes popIn {
-    0% { opacity: 0; transform: scale(0); }
-    100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Calcoliamo il tempo: Ritardo della linea + durata della linea (1.5s) */
-.column-left svg circle { animation-delay: 1s; } 
-.column-center svg circle { animation-delay: 1.4s; }
-.column-right svg circle { animation-delay: 1.8s; }
+.column-left svg circle {
+  animation-delay: 1s;
+}
+.column-center svg circle {
+  animation-delay: 1.4s;
+}
+.column-right svg circle {
+  animation-delay: 1.8s;
+}
 
 /* IMPORTANTE: Per far funzionare lo scale() sul pallino SVG dal suo centro */
 .hero-puzzle svg circle {
-    transform-origin: center;
-    transform-box: fill-box;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 /* =========================================
    6. INTERATTIVITA' SVG
    ========================================= */
 
 /* 1. Rendiamo "trasparenti al mouse" le colonne intere e l'SVG base per non bloccare i click sottostanti */
-.column-left, .column-center, .column-right,
+.column-left,
+.column-center,
+.column-right,
 .hero-puzzle svg {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 /* 2. Riattiviamo il click in modo esplicito SOLO per il link dentro l'SVG */
 .hero-puzzle svg a {
-    pointer-events: auto;
-    cursor: pointer;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* 3. Usiamo "all" per assicurarci che i tracciati vettoriali registrino il mouse con precisione */
 .hero-puzzle svg a path,
 .hero-puzzle svg a circle {
-    pointer-events: all;
+  pointer-events: all;
 }
 
 /* 4. Effetto hover: ingrassiamo SOLO la linea nera (ignorando quella invisibile spessa) */
 .hero-puzzle svg a:hover path[stroke="black"] {
-    stroke-width: 6px; 
-    transition: stroke-width 0.2s ease;
+  stroke-width: 6px;
+  transition: stroke-width 0.2s ease;
 }
 
 .hero-puzzle svg a:hover circle {
-    transform: scale(1.2); 
-    transition: transform 0.2s ease;
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+/* =========================================
+   7. PAGINA NEWS - HERO SVG & ANIMAZIONI
+   ========================================= */
+
+/* Risolve il problema del posizionamento centrando matematicamente l'illustrazione */
+.news-hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(var(--grid-size) * 3);
+  padding-bottom: calc(var(--grid-size) * 3);
+}
+
+.news-hero-svg {
+  width: 100%;
+  max-width: 1376px; /* Forza l'ingombro corretto rispetto allo schermo */
+  display: block;
+}
+
+/* 1. Animazione Quadrato Sinistro */
+.news-box-left {
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation: spinOutLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes spinOutLeft {
+  0% {
+    opacity: 0;
+    /* Parte dal centro (spostato a destra di 496px), piccolo e ruotato */
+    transform: translateX(496px) scale(0.2) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    /* Torna alla sua posizione a sinistra, grande e dritto */
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+}
+
+/* 2. Animazione Quadrato Destro */
+.news-box-right {
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation: spinOutRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes spinOutRight {
+  0% {
+    opacity: 0;
+    /* Parte dal centro (spostato a sinistra di 496px), piccolo e ruotato */
+    transform: translateX(-496px) scale(0.2) rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    /* Torna alla sua posizione a destra, grande e dritto */
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+}
+
+/* 3. Animazione Linea (Cresce dal centro verso i lati) */
+.news-line-center {
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scaleX(0); /* Parte larga zero pixel */
+  animation: growLineCenter 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s; /* Inizia a crescere mentre i quadrati stanno ancora ruotando verso l'esterno */
+}
+
+@keyframes growLineCenter {
+  to {
+    transform: scaleX(1); /* Raggiunge la sua larghezza totale */
+  }
+}
+
+/* 4. Pallini Finali */
+.news-dot-svg {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: popIn 0.5s ease-out forwards;
+  animation-delay: 1.5s; /* Spuntano alla fine di tutti i movimenti */
+}
+/* =========================================
+   8. PAGINA NEWS - FEED ARTICOLI
+   ========================================= */
+
+/* Il contenitore che incolonna tutte le card */
+.news-feed {
+  display: flex;
+  flex-direction: column; /* Impila gli elementi verticalmente invece che affiancarli */
+  align-items: center; /* Centra le card nello schermo */
+  gap: calc(var(--grid-size) * 2); /* Distanza tra una card e l'altra (48px) */
+  padding-bottom: calc(
+    var(--grid-size) * 4
+  ); /* Spazio vuoto prima del footer */
+}
+
+/* La singola card dell'articolo */
+.news-card {
+  width: 100%;
+  max-width: 1376px; /* La facciamo larga esattamente quanto l'illustrazione sopra! */
+  border: 3px solid #000; /* Stesso spessore dei box animati */
+  padding: calc(var(--grid-size) * 1.5) calc(var(--grid-size) * 2); /* Spazio interno: 36px sopra/sotto, 48px lati */
+  background-color: transparent; /* Lasciamo intravedere i quadretti dietro */
+  border-radius: 5px;
+}
+
+/* Stili del Testo */
+.news-card h2 {
+  font-size: 32px;
+  margin-bottom: var(--grid-size); /* Un quadretto di respiro sotto il titolo */
+}
+
+.news-card .subtitle {
+  font-style: italic; /* Trasforma il font in corsivo */
+  font-size: 20px;
+  color: #333; /* Un grigio scuro, per gerarchia visiva rispetto al testo nero */
+  margin-bottom: var(--grid-size);
+}
+
+.news-card .content {
+  font-size: 16px;
+  line-height: 1.6; /* Aumenta l'interlinea per rendere la lettura molto più ariosa e piacevole */
+}
+/* =========================================
+   9. FOOTER
+   ========================================= */
+
+/* Sfondo nero, testo bianco e spaziatura interna */
+.site-footer {
+  background-color: #000000;
+  color: #ffffff;
+  width: 100%;
+  /* Diamo un po' di spazio sopra/sotto e allineiamo i lati ai 24px della griglia */
+  padding: calc(var(--grid-size) * 3) 24px;
+  display: flex;
+  justify-content: center; /* Mantiene tutto il blocco al centro dello schermo */
+}
+
+/* Il contenitore che racchiude tutto il footer */
+.footer-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Lo facciamo largo esattamente come le card delle news (1376px), 
+       così il testo "Who" si allinea a piombo con la riga nera del box sopra! */
+  max-width: 1376px;
+
+  /* NUOVO: Spinge tutto a sinistra invece di sparpagliarlo */
+  justify-content: flex-start;
+
+  /* NUOVO: Definisce esattamente lo spazio tra il Menu, la Linea e i Social (es. 2 quadretti) */
+  gap: 48px;
+}
+
+/* Colonna Sinistra (ora contiene solo la Navigazione) */
+.footer-left {
+  display: flex;
+  /* Rimosso il gap precedente dato che abbiamo tolto il nome */
+}
+
+.footer-name {
+  font-size: 16px;
+  opacity: 0.8; /* Lo rende un bianco leggermente smorzato per eleganza */
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-direction: column; /* Impila i link (Who, Works, ecc.) in verticale */
+  gap: 8px; /* Spazio tra una voce e l'altra */
+}
+
+.footer-nav a {
+  font-size: 16px;
+  opacity: 0.6; /* Testo più grigio */
+  transition: opacity 0.3s ease;
+}
+
+/* Quando passi col mouse, il testo diventa bianco acceso */
+.footer-nav a:hover {
+  opacity: 1;
+}
+
+/* --- Linea di Separazione --- */
+.footer-separator {
+  width: 2px;
+  height: 120px; /* Altezza della linea bianca */
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+/* --- Colonna Destra (Social) --- */
+.footer-right {
+  display: flex;
+  gap: 16px; /* Distanza tra le icone */
+}
+
+/* Dimensioni delle icone e transizione per l'hover */
+.footer-right a img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+/* Piccolo rimbalzo verso l'alto quando passi sopra all'icona */
+.footer-right a:hover img {
+  transform: translateY(-5px);
 }
