@@ -501,3 +501,142 @@ body {
 .footer-right a:hover img {
   transform: translateY(-5px);
 }
+
+/* =========================================
+   10. PAGINA WHO - HERO E PROFILO
+   ========================================= */
+
+/* Centra il blocco e dà respiro dall'alto */
+.who-hero-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(var(--grid-size) * 3);
+}
+
+.who-hero-box {
+  width: 100%;
+  max-width: 1376px;
+  border: 3px solid #000;
+  display: flex;
+  background-color: transparent;
+  border-radius: 5px;
+
+  /* NUOVO: Opacità a zero e animazione di ingresso */
+  opacity: 0;
+  /* NUOVO: Abbiamo cambiato il nome dell'animazione in slideInRight */
+  animation: slideInRight 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+/* NUOVO: Fa scivolare il blocco da sinistra verso destra */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    /* Parte spostato di 80px verso sinistra (valore negativo) */
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    /* Arriva alla sua posizione originale (0) */
+    transform: translateX(0);
+  }
+}
+
+/* Colonna di sinistra (Etichetta + Foto) */
+.who-profile {
+  width: 320px; /* Larghezza fissa della foto. Puoi regolarla in base a Figma */
+  display: flex;
+  flex-direction: column; /* Impila l'etichetta SOPRA e la foto SOTTO */
+  border-right: 3px solid #000; /* Crea la linea divisoria interna tra foto e SVG */
+}
+
+/* Etichetta nera con il nome */
+.black-label {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 18px;
+  /* Diciamo al testo di non andare mai a capo */
+  white-space: nowrap;
+}
+
+/* Immagine del profilo */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Area destra destinata all'SVG */
+.who-graphic {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Assicuriamoci che l'SVG non sbordi dal suo contenitore e resti proporzionato */
+.who-graphic svg {
+  width: 100%;
+  height: auto;
+  max-width: 926px; /* La misura nativa del tuo file su Figma */
+}
+
+/* 1. Animazione della Linea */
+.who-svg-path {
+  stroke-dasharray: 1500; /* Un valore abbastanza grande da coprire la lunghezza totale del tracciato */
+  stroke-dashoffset: 1500; /* Spinge la linea fuori dall'area visibile */
+  animation: drawWhoLine 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.5s; /* Parte una frazione di secondo dopo il caricamento della pagina */
+}
+
+@keyframes drawWhoLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 2. Animazione dei Pallini (riutilizziamo il keyframe popIn) */
+.who-svg-dot {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: popIn 0.5s ease-out forwards;
+  animation-delay: 1.5s; /* Spuntano nel momento esatto in cui i tracciati terminano la loro corsa */
+}
+/* =========================================
+   11. PAGINA WHO - BIO
+   ========================================= */
+
+/* Centriamo il blocco e diamo 2 quadretti di distanza dal blocco superiore */
+.who-bio-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(var(--grid-size) * 2);
+}
+
+/* Il rettangolo della bio */
+.who-bio-box {
+  width: 100%;
+  max-width: 1376px; /* Stessa larghezza dell'hero per un allineamento a piombo */
+  border: 3px solid #000;
+  /* Spazio interno: 2 quadretti sopra/sotto e 3 quadretti ai lati */
+  padding: calc(var(--grid-size) * 2) calc(var(--grid-size) * 3);
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+/* Stile del testo */
+.who-bio-box p {
+  font-size: 20px;
+  line-height: 1.6; /* Interlinea ariosa per facilitare la lettura */
+  color: #333; /* Un grigio molto scuro, elegante e meno pesante del nero assoluto */
+  margin-bottom: var(
+    --grid-size
+  ); /* Un quadretto di spazio tra un paragrafo e l'altro */
+}
+
+/* Rimuove lo spazio extra sotto l'ultimo paragrafo per mantenere i margini del box perfetti */
+.who-bio-box p:last-child {
+  margin-bottom: 0;
+}
