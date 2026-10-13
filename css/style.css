@@ -565,6 +565,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  color: black;
 }
 
 /* Area destra destinata all'SVG */
@@ -639,4 +640,102 @@ body {
 /* Rimuove lo spazio extra sotto l'ultimo paragrafo per mantenere i margini del box perfetti */
 .who-bio-box p:last-child {
   margin-bottom: 0;
+}
+/* =========================================
+   12. PAGINA WHO - PROGRAMMI
+   ========================================= */
+
+/* Contenitore principale della sezione */
+.who-programs-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Mantiene tutto centrato rispetto allo schermo */
+}
+
+/* --- Le 3 linee verticali --- */
+.programs-lines {
+  /* Impostiamo la larghezza totale a 1376px per allinearci esattamente al bordo sinistro del box sopra */
+  width: 100%;
+  max-width: 1376px;
+  height: 300px; /* Lunghezza delle linee verticali (5 quadretti) */
+  display: flex;
+  /* NUOVO: Riduciamo la distanza tra le linee a 1 solo quadretto (24px) 
+       così restano "impacchettate" e colpiscono tutte l'etichetta nera */
+  gap: var(--grid-size);
+
+  /* NUOVO: Le spostiamo leggermente per centrarle visivamente 
+       rispetto alla larghezza dell'etichetta "Programmi" */
+  padding-left: calc(var(--grid-size) * 1.5);
+}
+
+.line-v {
+  width: 3px; /* Stesso spessore dei bordi neri */
+  height: 100%;
+  background-color: #000;
+}
+
+/* --- Il contenitore dell'etichetta e del box icone --- */
+.programs-container {
+  width: 100%;
+  max-width: 1376px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea etichetta e box a sinistra */
+}
+
+/* Riusiamo la classe .black-label e aggiungiamo un fix per questa sezione */
+.programs-label {
+  /* Togliamo un po' di bordo in basso per farlo aderire perfettamente al box sottostante */
+  margin-bottom: -3px;
+  z-index: 2; /* Lo teniamo in primo piano sopra il bordo del box */
+}
+
+/* --- Il Box delle Icone --- */
+.programs-box {
+  border: 3px solid #000;
+  padding: calc(var(--grid-size) * 1.5) calc(var(--grid-size) * 2);
+  display: flex;
+  gap: calc(var(--grid-size) * 1.5); /* Spazio tra le icone dei programmi */
+  background-color: transparent;
+}
+
+/* Grandezza delle icone dei software */
+.software-icon {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s ease; /* Prepariamo una morbida transizione */
+}
+
+/* Effetto hover: l'icona si ingrandisce leggermente quando ci passi sopra */
+.software-icon:hover {
+  transform: scale(1.15);
+}
+/* =========================================
+   13. PAGINA WHO - GOALS (PLACEHOLDER)
+   ========================================= */
+
+.who-goals-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: calc(var(--grid-size) * 4);
+  padding-bottom: calc(var(--grid-size) * 4);
+  border-radius: 5px;
+}
+
+.goals-box-placeholder {
+  width: 100%;
+  max-width: 1376px;
+  height: 240px; /* Mantiene l'ingombro verticale esatto sulla griglia */
+  border: 3px solid #000;
+  display: block; /* Fondamentale per far rispettare altezza e larghezza a un tag <a> */
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Leggerissimo feedback visivo al passaggio del mouse in attesa dell'animazione */
+.goals-box-placeholder:hover {
+  background-color: #f8f8f8;
 }
