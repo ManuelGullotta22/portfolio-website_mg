@@ -896,3 +896,344 @@ body {
   object-fit: cover; /* Il trucco magico per non deformare la foto */
   display: block; /* Rimuove uno spazio vuoto invisibile che i browser mettono sotto le immagini */
 }
+/* ========================================= */
+/* --- PAGINA PROGETTO: TEMPLATE MOTION --- */
+/* ========================================= */
+
+/* Margini interni della pagina per non far sbattere il contenuto sull'header/footer */
+main {
+  padding: 4rem 4rem 8rem 4rem;
+}
+
+/* Titolo del progetto */
+.project-title {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Contenitore Video */
+.project-hero-media {
+  margin-bottom: 4rem; /* Spazio prima del blocco di testo (Brief) */
+}
+
+/* Blocca il player in 16:9 */
+.media-main {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 5px; /* Manteniamo la stondatura coerente con la home */
+}
+/* ========================================= */
+/* --- SEZIONE TESTI PROGETTO --- */
+/* ========================================= */
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Distanza tra i tre blocchi di testo */
+  margin-bottom: 4rem; /* Spazio prima di arrivare alla fine della pagina o ai prossimi elementi */
+}
+
+.project-info h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.project-info p,
+.project-info ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.project-info ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.project-info li {
+  margin-bottom: 0.5rem;
+}
+/* ========================================= */
+/* --- GRIGLIA STYLE FRAMES --- */
+/* ========================================= */
+
+.project-style-frames h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.frames-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Crea 2 colonne di uguale larghezza */
+  gap: 2rem; /* Distanza tra le foto */
+  margin-top: 1.5rem;
+}
+
+.frame-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.frame-number {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.frame-img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Mantiene proporzioni identiche al video in alto */
+  border-radius: 5px;
+  object-fit: cover; /* Taglia via gli eccessi senza schiacciare se la foto non è perfettamente 16:9 */
+}
+/* ========================================= */
+/* --- PAGINA GOALS --- */
+/* ========================================= */
+
+.goals-page {
+  padding: 4rem 4rem 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra tutto il contenuto della pagina */
+}
+
+/* Hero per il Lottie */
+.goals-hero {
+  width: 100%;
+  max-width: 1200px; /* Aumentato da 900px a 1200px (o puoi mettere 'none' per farlo fluidissimo) */
+  aspect-ratio: 16 / 9;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin-bottom: 4rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lottie-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Layout dei 3 Box */
+.goals-text-blocks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px; /* Aumentato da 800px a 1100px per renderli belli larghi */
+  margin-bottom: 5rem;
+}
+
+.goal-box {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 2.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.goal-box p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  color: #333;
+}
+
+/* Le linee verticali nere di collegamento */
+.box-connector {
+  width: 2px;
+  height: 50px;
+  background-color: #000;
+}
+/* ========================================= */
+/* --- RADAR CHART AUTOVALUTAZIONE --- */
+/* ========================================= */
+
+.goals-chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.chart-title {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 3rem;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+}
+
+/* Contenitore Relativo per allineare SVG e Icone */
+.radar-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 4rem;
+}
+
+/* Stili dell'SVG */
+
+.radar-spoke {
+  stroke: #999;
+  stroke-width: 1;
+}
+
+.radar-outer {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5;
+}
+
+/* Posizioniamo l'SVG sopra il poligono grigio ma gli togliamo l'interazione per non bloccare il mouse */
+.radar-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* La nuova macchia grigia universale */
+.skill-morph-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d3;
+  opacity: 0.8;
+  z-index: 1; /* Sta sotto le linee e sotto le icone */
+
+  /* Stato Neutro */
+  -webkit-clip-path: polygon(
+    50% 30%,
+    65.6% 37.4%,
+    69.4% 54.4%,
+    58.6% 68%,
+    41.4% 68%,
+    30.6% 54.4%,
+    34.4% 37.4%
+  );
+  clip-path: polygon(
+    50% 30%,
+    65.6% 37.4%,
+    69.4% 54.4%,
+    58.6% 68%,
+    41.4% 68%,
+    30.6% 54.4%,
+    34.4% 37.4%
+  );
+
+  /* Animazione su tutto, garantita su ogni browser */
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Effetto Hover: la forma assume i tuoi valori reali */
+.radar-container:hover .skill-morph-div {
+  background-color: #a0a0a0;
+
+  /* 1. Modifica per Safari */
+  -webkit-clip-path: polygon(
+    /* 1. Figma (In alto al centro)        | MAX: 50% 10% */ 50% 14%,
+    /* 2. Premiere (In alto a destra)      | MAX: 81% 25% */ 71% 35%,
+    /* 3. InDesign (A destra)              | MAX: 89% 59% */ 75% 54%,
+    /* 4. Photoshop (In basso a destra)    | MAX: 67% 86% */ 63% 77%,
+    /* 5. After Effects (In basso a sx)    | MAX: 33% 86% */ 33.4% 84%,
+    /* 6. Cinema 4D (A sinistra)           | MAX: 11% 59% */ 22.6% 56.2%,
+    /* 7. Illustrator (In alto a sinistra) | MAX: 19% 25% */ 23.4% 28.6%
+  );
+
+  /* 2. Modifica IDENTICA per Chrome/Firefox */
+  clip-path: polygon(
+    /* 1. Figma (In alto al centro)        | MAX: 50% 10% */ 50% 14%,
+    /* 2. Premiere (In alto a destra)      | MAX: 81% 25% */ 71% 35%,
+    /* 3. InDesign (A destra)              | MAX: 89% 59% */ 75% 54%,
+    /* 4. Photoshop (In basso a destra)    | MAX: 67% 86% */ 63% 77%,
+    /* 5. After Effects (In basso a sx)    | MAX: 33% 86% */ 33.4% 84%,
+    /* 6. Cinema 4D (A sinistra)           | MAX: 11% 59% */ 22.6% 56.2%,
+    /* 7. Illustrator (In alto a sinistra) | MAX: 19% 25% */ 23.4% 28.6%
+  );
+}
+/* --- Posizionamento delle 7 icone software --- */
+.radar-icon {
+  position: absolute;
+  width: 50px; /* Grandezza delle tue icone (regolala se serve) */
+  height: 50px;
+  border-radius: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Centra perfettamente l'icona sul vertice */
+  z-index: 10;
+  background-color: #000; /* Sfondo nero come da tuo layout */
+}
+
+/* Coordinate calcolate sui vertici dell'ettagono */
+.icon-figma {
+  top: 10%;
+  left: 50%;
+}
+.icon-pr {
+  top: 24.8%;
+  left: 81.2%;
+}
+.icon-id {
+  top: 59%;
+  left: 89%;
+}
+.icon-ps {
+  top: 86%;
+  left: 67.4%;
+}
+.icon-ae {
+  top: 86%;
+  left: 32.6%;
+}
+.icon-c4d {
+  top: 59%;
+  left: 11%;
+}
+.icon-ai {
+  top: 24.8%;
+  left: 18.8%;
+}
+
+/* --- Linea inferiore con i pallini --- */
+.bottom-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+
+.timeline-dot {
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.timeline-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #000;
+}

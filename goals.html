@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goals - Manuel Gullotta</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo logo-left">
+        <a href="index.html" aria-label="Torna alla Home">
+          <img class="logo-icon" src="assets/img/puzle_icon.svg" alt="" />
+        </a>
+      </div>
+
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="who.html">WHO</a></li>
+          <li class="separator" aria-hidden="true">|</li>
+          <li><a href="works.html" class="active">WORKS</a></li>
+          <li class="separator" aria-hidden="true">|</li>
+          <li><a href="news.html">NEWS</a></li>
+        </ul>
+      </nav>
+
+      <div class="logo logo-right" aria-hidden="true">
+        <img class="logo-icon" src="assets/img/puzle_icon.svg" alt="" />
+      </div>
+    </header>
+
+    <main class="goals-page">
+      <!-- 1. HERO LOTTIE -->
+      <section class="goals-hero">
+        <!-- Questo è il contenitore dove agganceremo la tua animazione Lottie -->
+        <div id="goals-lottie" class="lottie-container"></div>
+      </section>
+
+      <!-- 2. TESTO IN 3 BOX CONNESSI -->
+      <section class="goals-text-blocks">
+        <!-- Box 1: Focus Creativo e Motion -->
+        <div class="goal-box">
+          <p>
+            Dal punto di vista creativo, supportato dal mio percorso in NABA, ho
+            sviluppato un profilo trasversale. I miei punti di forza principali
+            risiedono nell'animazione 2D e nel 3D motion design (attraverso
+            l'uso di After Effects, Cinema 4D e Redshift), affiancati alla
+            progettazione UI/UX per siti e app con Figma. Mantengo una solida
+            operatività anche nel graphic design tradizionale e nella creazione
+            di asset video per formati dinamici.
+          </p>
+        </div>
+
+        <!-- Linea di connessione -->
+        <div class="box-connector"></div>
+
+        <!-- Box 2: Background Strategico / Planner -->
+        <div class="goal-box">
+          <p>
+            Questa forte componente visiva si fonda su un rigoroso metodo
+            organizzativo, derivato dal mio background iniziale come media
+            planner iniziato nel 2020. L'esperienza in agenzia mi permette di
+            gestire più progetti in contemporanea, ottimizzando i flussi di
+            lavoro, e di far dialogare strategia ed esecuzione traducendo con
+            precisione gli obiettivi di business (incluse le soluzioni per la
+            segnaletica OOH) in un output visivo mirato.
+          </p>
+        </div>
+
+        <!-- Linea di connessione -->
+        <div class="box-connector"></div>
+
+        <!-- Box 3: Obiettivi Futuri -->
+        <div class="goal-box">
+          <p>
+            Guardando ai miei obiettivi, desidero dedicarmi a tempo pieno allo
+            sviluppo di animazioni 2D e 3D per spot pubblicitari e per
+            l'ecosistema web. Parallelamente, punto ad ampliare il mio raggio
+            d'azione acquisendo esperienza diretta sul set per interiorizzare le
+            logiche della regia e del montaggio pubblicitario, con lo scopo di
+            arrivare a gestire il prodotto audiovisivo nella sua interezza.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. RADAR CHART (Grafico Autovalutazione) -->
+      <section class="goals-chart-section">
+        <h2 class="chart-title">Grafico di autovalutazione</h2>
+
+        <div class="radar-container">
+          <div class="skill-morph-div"></div>
+          <img
+            src="assets/img/icon-figma.svg"
+            alt="Figma"
+            class="radar-icon icon-figma"
+          />
+          <img
+            src="assets/img/icon-pr.svg"
+            alt="Premiere"
+            class="radar-icon icon-pr"
+          />
+          <img
+            src="assets/img/icon-id.svg"
+            alt="InDesign"
+            class="radar-icon icon-id"
+          />
+          <img
+            src="assets/img/icon-ps.svg"
+            alt="Photoshop"
+            class="radar-icon icon-ps"
+          />
+          <img
+            src="assets/img/icon-ae.svg"
+            alt="After Effects"
+            class="radar-icon icon-ae"
+          />
+          <img
+            src="assets/img/icon-c4d.svg"
+            alt="Cinema 4D"
+            class="radar-icon icon-c4d"
+          />
+          <img
+            src="assets/img/icon-ai.svg"
+            alt="Illustrator"
+            class="radar-icon icon-ai"
+          />
+
+          <!-- Il grafico SVG vero e proprio -->
+          <svg viewBox="0 0 500 500" class="radar-svg">
+            <!-- Linee a raggiera (dal centro ai vertici) -->
+            <line x1="250" y1="250" x2="250" y2="50" class="radar-spoke" />
+            <line x1="250" y1="250" x2="406" y2="124" class="radar-spoke" />
+            <line x1="250" y1="250" x2="445" y2="295" class="radar-spoke" />
+            <line x1="250" y1="250" x2="337" y2="430" class="radar-spoke" />
+            <line x1="250" y1="250" x2="163" y2="430" class="radar-spoke" />
+            <line x1="250" y1="250" x2="55" y2="295" class="radar-spoke" />
+            <line x1="250" y1="250" x2="94" y2="124" class="radar-spoke" />
+
+            <!-- Ettagono Esterno (Bordo Nero fisso) -->
+            <path
+              class="radar-outer"
+              d="M 250 50 L 406 124 L 445 295 L 337 430 L 163 430 L 55 295 L 94 124 Z"
+            />
+          </svg>
+        </div>
+
+        <!-- Linea inferiore con i due pallini neri -->
+        <div class="bottom-timeline">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <div class="timeline-dot"></div>
+        </div>
+      </section>
+      <section class="goals-chart">
+        <!-- Qui costruiremo il grafico interattivo -->
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Colonna Sinistra: Navigazione -->
+        <div class="footer-left">
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="who.html">Who</a></li>
+              <li><a href="works.html">Works</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="goals.html">Goals</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Linea Verticale Centrale -->
+        <div class="footer-separator"></div>
+
+        <!-- Colonna Destra: Icone Social -->
+        <div class="footer-right">
+          <!-- Ricordati di esportare queste 5 icone da Figma come SVG! -->
+          <a href="#" aria-label="LinkedIn"
+            ><img src="assets/img/linkedin.svg" alt="LinkedIn"
+          /></a>
+          <a href="#" aria-label="WhatsApp"
+            ><img src="assets/img/whatsapp.svg" alt="WhatsApp"
+          /></a>
+          <a href="#" aria-label="Instagram"
+            ><img src="assets/img/instagram.svg" alt="Instagram"
+          /></a>
+          <a href="#" aria-label="YouTube"
+            ><img src="assets/img/youtube.svg" alt="YouTube"
+          /></a>
+          <a href="#" aria-label="Email"
+            ><img src="assets/img/email.svg" alt="Email"
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script src="js/script.js"></script>
+</html>
