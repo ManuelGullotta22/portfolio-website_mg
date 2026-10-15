@@ -31,3 +31,21 @@ if (goalsLottieContainer) {
     path: "assets/animations/goals-anim-2.json" /* <-- Inserisci qui il nome esatto del tuo file .json */,
   });
 }
+/* AUTOPLAY SLIDER PROGETTI CARTACEI */
+const slides = document.querySelectorAll(".slide");
+
+if (slides.length > 0) {
+  let currentSlide = 0;
+
+  // Cambia immagine ogni 3.5 secondi (3500 millisecondi)
+  setInterval(() => {
+    // Togli la classe attiva alla slide corrente
+    slides[currentSlide].classList.remove("active");
+
+    // Passa alla prossima slide (e torna alla prima se sei all'ultima)
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // Aggiungi la classe attiva alla nuova slide
+    slides[currentSlide].classList.add("active");
+  }, 3500);
+}
