@@ -19,3 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     goalsAnim.play();
   });
 });
+/* INIZIALIZZAZIONE LOTTIE - PAGINA GOALS */
+const goalsLottieContainer = document.getElementById("goals-lottie");
+
+if (goalsLottieContainer) {
+  lottie.loadAnimation({
+    container: goalsLottieContainer,
+    renderer: "svg",
+    loop: true /* Cambia in 'false' se vuoi che l'animazione si fermi dopo un giro */,
+    autoplay: true,
+    path: "assets/animations/goals-anim-2.json" /* <-- Inserisci qui il nome esatto del tuo file .json */,
+  });
+}
