@@ -115,6 +115,11 @@ body {
   text-decoration-thickness: 2px; /* Spessore che richiama le linee del tuo design */
   text-decoration-color: #ffffff;
 }
+/* Nascondi Hamburger e Dropdown su PC */
+.mobile-hamburger,
+.mobile-dropdown {
+  display: none;
+}
 /* =========================================
    3. MAIN LAYOUT (GRID STACKING)
    ========================================= */
@@ -1293,4 +1298,211 @@ main {
 .next-project-link:hover {
   opacity: 0.5; /* Diventa grigio al passaggio del mouse */
   transform: translateX(15px); /* Si sposta leggermente verso destra */
+}
+/* =========================================
+   14. MEDIA QUERIES (MOBILE & TABLET)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* --- HEADER --- */
+  .desktop-nav,
+  .logo-right {
+    display: none;
+  }
+
+  .site-header {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .mobile-hamburger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  /* --- HOME PUZZLE: CENTRATURA ASSOLUTA E ROTAZIONE --- */
+
+  .hero-puzzle {
+    display: block; /* Spegne la griglia */
+    position: relative;
+    width: 100%;
+    /* Altezza calcolata per mantenere la proporzione esatta (1376/896 = 1.535) */
+    height: 153.5vw;
+    padding: 0;
+    overflow: hidden; /* Taglia fuori tutto ciò che sborda */
+    margin-top: 2rem; /* Spazio di respiro dall'header */
+  }
+
+  .column-left,
+  .column-center,
+  .column-right {
+    position: absolute;
+    /* Ancora i blocchi al centro esatto del contenitore genitore */
+    top: 50%;
+    left: 50%;
+
+    /* Invertiamo larghezza e altezza preparandoli alla rotazione */
+    width: 153.5vw;
+    height: 100vw;
+
+    /* Assegniamo la NUOVA animazione esclusiva per mobile */
+    animation: slideInMobile 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  /* Ripristiniamo i ritardi originali per la sequenza a cascata */
+  .column-right {
+    animation-delay: 1s;
+  }
+  .column-center {
+    animation-delay: 0.6s;
+  }
+  .column-left {
+    animation-delay: 0.2s;
+  }
+
+  /* ANIMAZIONE MOBILE: Centra (translate -50%), Ruota (90deg) e Muove (translateY) */
+  @keyframes slideInMobile {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(90deg) translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(90deg) translateY(0);
+    }
+  }
+
+  .hero-puzzle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .hero-puzzle svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
+  /* --- HOME PUZZLE: DISATTIVA I LINK SU MOBILE (Metodo Pulito) --- */
+  .hero-puzzle svg a path,
+  .hero-puzzle svg a circle {
+    pointer-events: none;
+  }
+
+  .hero-puzzle svg a {
+    cursor: default;
+  }
+  /* --- FOOTER MOBILE --- */
+  .footer-container {
+    flex-direction: column; /* Impila gli elementi verticalmente */
+    justify-content: center;
+    align-items: center;
+    gap: 32px; /* Spazio tra il blocco di testo, la linea e i social */
+  }
+
+  /* Centra le scritte della navigazione e le ingrandisce */
+  .footer-nav ul {
+    align-items: center;
+    gap: 16px; /* Più respiro tra un link e l'altro */
+  }
+
+  .footer-nav a {
+    font-size: 24px; /* Testi più grandi, perfetti come da tuo design */
+  }
+
+  /* Trasforma la linea: da verticale a orizzontale */
+  .footer-separator {
+    width: 160px; /* Diventa una linea orizzontale */
+    height: 2px; /* Spessa 2 pixel */
+  }
+
+  /* Centra le icone e le distanzia per evitare tocchi accidentali */
+  .footer-right {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  /* Ingrandisce un po' le icone per il mobile */
+  .footer-right a img {
+    width: 40px;
+    height: 40px;
+  }
+  /* --- HAMBURGER MENU --- */
+  .mobile-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .burger-line {
+    width: 32px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+
+  /* La trasformazione in "X" (guidata dal JS) */
+  .mobile-hamburger.is-active .burger-line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .mobile-hamburger.is-active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-hamburger.is-active .burger-line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  /* --- MENU DROPDOWN (Il box nero) --- */
+  .mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 96px; /* Si aggancia sotto l'header */
+    right: 0;
+    background-color: #000;
+    width: 250px;
+    padding: 0 32px 32px 32px;
+
+    /* Stato Nascosto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+  }
+
+  /* Stato Aperto (guidato dal JS) */
+  .mobile-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-separator {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    margin-bottom: 24px;
+  }
+
+  .mobile-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .mobile-dropdown a {
+    font-size: 24px;
+    font-weight: normal;
+  }
 }
