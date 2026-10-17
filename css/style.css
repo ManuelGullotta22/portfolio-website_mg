@@ -1268,3 +1268,29 @@ main {
 .slide.active {
   opacity: 1;
 }
+/* ========================================= */
+/* --- NEXT PROJECT LINK --- */
+/* ========================================= */
+.next-project-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: right; /* Allinea il testo a destra */
+  padding-top: 2rem;
+  padding-bottom: 2rem; /* Spazio prima del footer nero */
+}
+
+.next-project-link {
+  font-size: 1.5rem; /* Testo bello grande */
+  font-weight: normal;
+  color: #000;
+  display: inline-block;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease; /* Transizioni fluide */
+}
+
+.next-project-link:hover {
+  opacity: 0.5; /* Diventa grigio al passaggio del mouse */
+  transform: translateX(15px); /* Si sposta leggermente verso destra */
+}
