@@ -23,6 +23,22 @@
           <li><a href="news.html">NEWS</a></li>
         </ul>
       </nav>
+      <div class="mobile-hamburger" id="hamburger-btn" aria-label="Apri Menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </div>
+
+      <!-- 2. Il menu a comparsa (il box nero) -->
+      <nav class="mobile-dropdown" id="mobile-menu">
+        <div class="dropdown-separator"></div>
+        <ul>
+          <li><a href="who.html">Who</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="goals.html">Goals</a></li>
+        </ul>
+      </nav>
 
       <div class="logo logo-right" aria-hidden="true">
         <img class="logo-icon" src="assets/img/puzle_icon.svg" alt="" />
@@ -214,4 +230,13 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("is-active");
+        mobileMenu.classList.toggle("is-open");
+      });
+    </script>
 </html>

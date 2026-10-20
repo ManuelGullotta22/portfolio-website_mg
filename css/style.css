@@ -506,6 +506,14 @@ body {
 .footer-right a:hover img {
   transform: translateY(-5px);
 }
+/* Nasconde il bottone Goals su desktop */
+.mobile-goals-btn {
+  display: none;
+}
+/* Nasconde il bottone del Radar su PC */
+.mobile-radar-btn {
+  display: none;
+}
 
 /* =========================================
    10. PAGINA WHO - HERO E PROFILO
@@ -1152,7 +1160,7 @@ main {
 }
 
 /* Effetto Hover: la forma assume i tuoi valori reali */
-.radar-container:hover .skill-morph-div {
+.radar-container:hover .skill-morph-div,.radar-container.is-active .skill-morph-div {
   background-color: #a0a0a0;
 
   /* 1. Modifica per Safari */
@@ -1319,49 +1327,98 @@ main {
     display: flex;
     align-items: center;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
   }
 
-  /* --- HOME PUZZLE: CENTRATURA ASSOLUTA E ROTAZIONE --- */
+  .burger-line {
+    width: 32px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
 
+  .mobile-hamburger.is-active .burger-line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .mobile-hamburger.is-active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-hamburger.is-active .burger-line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  /* --- MENU DROPDOWN --- */
+  .mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 96px;
+    right: 0;
+    background-color: #000;
+    width: 250px;
+    padding: 0 32px 32px 32px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-separator {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    margin-bottom: 24px;
+  }
+
+  .mobile-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .mobile-dropdown a {
+    font-size: 24px;
+    font-weight: normal;
+  }
+
+  /* --- HOME PUZZLE --- */
   .hero-puzzle {
-    display: block; /* Spegne la griglia */
+    display: block; 
     position: relative;
     width: 100%;
-    /* Altezza calcolata per mantenere la proporzione esatta (1376/896 = 1.535) */
     height: 153.5vw;
     padding: 0;
-    overflow: hidden; /* Taglia fuori tutto ciò che sborda */
-    margin-top: 2rem; /* Spazio di respiro dall'header */
+    overflow: hidden; 
+    margin-top: 2rem; 
   }
 
   .column-left,
   .column-center,
   .column-right {
     position: absolute;
-    /* Ancora i blocchi al centro esatto del contenitore genitore */
     top: 50%;
     left: 50%;
-
-    /* Invertiamo larghezza e altezza preparandoli alla rotazione */
     width: 153.5vw;
     height: 100vw;
-
-    /* Assegniamo la NUOVA animazione esclusiva per mobile */
     animation: slideInMobile 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
 
-  /* Ripristiniamo i ritardi originali per la sequenza a cascata */
-  .column-right {
-    animation-delay: 1s;
-  }
-  .column-center {
-    animation-delay: 0.6s;
-  }
-  .column-left {
-    animation-delay: 0.2s;
-  }
+  .column-right { animation-delay: 1s; }
+  .column-center { animation-delay: 0.6s; }
+  .column-left { animation-delay: 0.2s; }
 
-  /* ANIMAZIONE MOBILE: Centra (translate -50%), Ruota (90deg) e Muove (translateY) */
   @keyframes slideInMobile {
     from {
       opacity: 0;
@@ -1388,7 +1445,7 @@ main {
     height: 100%;
     margin-top: 0;
   }
-  /* --- HOME PUZZLE: DISATTIVA I LINK SU MOBILE (Metodo Pulito) --- */
+
   .hero-puzzle svg a path,
   .hero-puzzle svg a circle {
     pointer-events: none;
@@ -1397,112 +1454,327 @@ main {
   .hero-puzzle svg a {
     cursor: default;
   }
-  /* --- FOOTER MOBILE --- */
-  .footer-container {
-    flex-direction: column; /* Impila gli elementi verticalmente */
-    justify-content: center;
-    align-items: center;
-    gap: 32px; /* Spazio tra il blocco di testo, la linea e i social */
+
+  /* =========================================
+     STRUTTURA GLOBALE CONTENITORI MOBILE
+     ========================================= */
+  main {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px; 
+    padding-right: 16px;
+    box-sizing: border-box;
+    overflow-x: hidden; 
   }
 
-  /* Centra le scritte della navigazione e le ingrandisce */
+  /* =========================================
+     PAGINA WHO - ADATTAMENTO MOBILE
+     ========================================= */
+  .who-hero-section,
+  .who-bio-section,
+  .who-programs-section {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .who-hero-box,
+  .who-bio-box,
+  .programs-container,
+  .who-goals-section {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .who-goals-section {
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    gap: 24px;
+  }
+
+  /* --- HERO & SVG --- */
+  .who-hero-box {
+    flex-direction: column; 
+  }
+  
+  .who-profile {
+    width: 100%;
+    padding: 0;
+    border-right: none; 
+    border-bottom: 3px solid #000;
+  }
+  
+  .who-graphic {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .who-graphic svg {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg) scale(1.3);
+    margin-top: -60px; 
+    width: 320px;
+    height: auto;
+  }
+
+  /* --- TESTO BIO --- */
+  .who-bio-box {
+    padding: 24px 12px; 
+    width: 100%;
+  }
+
+  .who-bio-box p {
+    font-size: 16px; 
+    line-height: 1.5; 
+  }
+
+  /* --- PROGRAMMI --- */
+  .programs-box {
+    padding: 24px 12px;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: 100%;
+  }
+  
+  .programs-lines {
+    height: 100px; 
+    padding-left: 24px;
+  }
+
+  /* --- GOALS BOX & BOTTONE MOBILE --- */
+  .goals-box-placeholder {
+    height: 180px; 
+    animation: none; 
+    width: 100%;
+  }
+
+  .mobile-goals-btn {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%; 
+    max-width: 300px;
+    margin: 0 auto; 
+  }
+
+  /* --- FOOTER MOBILE --- */
+  .footer-container {
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 32px; 
+  }
+
   .footer-nav ul {
     align-items: center;
-    gap: 16px; /* Più respiro tra un link e l'altro */
+    gap: 16px; 
   }
 
   .footer-nav a {
-    font-size: 24px; /* Testi più grandi, perfetti come da tuo design */
+    font-size: 24px; 
   }
 
-  /* Trasforma la linea: da verticale a orizzontale */
   .footer-separator {
-    width: 160px; /* Diventa una linea orizzontale */
-    height: 2px; /* Spessa 2 pixel */
+    width: 160px; 
+    height: 2px; 
   }
 
-  /* Centra le icone e le distanzia per evitare tocchi accidentali */
   .footer-right {
     justify-content: center;
     gap: 24px;
   }
 
-  /* Ingrandisce un po' le icone per il mobile */
   .footer-right a img {
     width: 40px;
     height: 40px;
   }
-  /* --- HAMBURGER MENU --- */
-  .mobile-hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 1000;
-  }
+  /* =========================================
+     PAGINA GOALS - ADATTAMENTO MOBILE
+     ========================================= */
 
-  .burger-line {
-    width: 32px;
-    height: 2px;
-    background-color: white;
-    transition: all 0.3s ease;
-  }
-
-  /* La trasformazione in "X" (guidata dal JS) */
-  .mobile-hamburger.is-active .burger-line:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-  }
-  .mobile-hamburger.is-active .burger-line:nth-child(2) {
-    opacity: 0;
-  }
-  .mobile-hamburger.is-active .burger-line:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-  }
-
-  /* --- MENU DROPDOWN (Il box nero) --- */
-  .mobile-dropdown {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 96px; /* Si aggancia sotto l'header */
-    right: 0;
-    background-color: #000;
-    width: 250px;
-    padding: 0 32px 32px 32px;
-
-    /* Stato Nascosto */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-  }
-
-  /* Stato Aperto (guidato dal JS) */
-  .mobile-dropdown.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .dropdown-separator {
+  /* Sblocca il contenitore principale della pagina */
+  main.goals-page {
+    padding-left: 16px;
+    padding-right: 16px;
     width: 100%;
-    height: 2px;
-    background-color: white;
-    margin-bottom: 24px;
+    box-sizing: border-box;
   }
 
-  .mobile-dropdown ul {
+  .goals-text-blocks {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    align-items: flex-end;
+    width: 100%;
   }
 
-  .mobile-dropdown a {
-    font-size: 24px;
-    font-weight: normal;
+  /* Selettore forte per vincere sulle regole desktop */
+  .goals-text-blocks .goal-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 12px; /* Esattamente identico a who-bio-box */
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  /* Disattiva il "tap" diretto sul radar per evitare conflitti */
+  .radar-container {
+    pointer-events: none;
+    width: 300px;
+    height: 300px;
+    margin-top: 16px;
+  }
+
+  /* Riattiva il tocco solo per il bottone */
+  .mobile-radar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%; 
+    max-width: 300px;
+    margin: 16px auto 32px auto; 
+    font-family: inherit;
+    pointer-events: auto; 
+  }
+ /* =========================================
+     PAGINA WORKS - ADATTAMENTO MOBILE DEFINITIVO
+     ========================================= */
+
+  /* 1. Resettiamo gli spazi: sia lo zigzag che la galleria devono essere larghi uguali */
+  .works-hero,
+  .works-gallery {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0; /* Togliamo padding extra: ci pensa già il <main> a dare i 16px di sicurezza dal bordo del telefono */
+    box-sizing: border-box;
+  }
+
+  /* 2. Trasforma la griglia da 2 colonne a 1 colonna impilata */
+  .works-gallery {
+    display: flex;
+    flex-direction: column; 
+    gap: 3rem; /* Spazio tra un progetto e l'altro */
+    margin-top: 2rem; /* Diamo un po' di respiro tra la scatola dello zigzag e il primo progetto */
+  }
+
+  /* 3. Adegua il box dello zigzag */
+  .works-hero-box {
+    width: 100%;
+    height: auto;
+    /* Riduciamo a 8px lo spazio laterale interno, così l'SVG si allarga spingendosi quasi contro i bordi neri della sua cornice */
+    padding: 24px 8px; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .works-hero-svg {
+    width: 100%; 
+    height: auto;
+    display: block;
+  }
+
+  /* 4. Rimuove il blur e lo zoom (Spegne l'effetto Hover su telefono) */
+  .hover-zoom {
+    filter: none; 
+    transform: scale(1); 
+  }
+
+  .work-link:active .hover-zoom {
+    transform: scale(1); 
+  }
+  /* =========================================
+     PAGINE DEI SINGOLI PROGETTI - MOBILE
+     ========================================= */
+
+  /* 1. Sblocca il contenitore principale della pagina progetto */
+  /* Nota: sovrascriviamo il 'main' globale solo per azzerare i padding enormi del desktop */
+  main {
+    padding: 16px !important; /* Usiamo !important solo per resettare con forza il 4rem 4rem 8rem 4rem del desktop su tutte le pagine progetto */
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* 2. Hero Media (Video o Slider) a tutto schermo (meno il padding) */
+  .project-hero-media,
+  .slider-container,
+  .media-main {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /* L'aspect-ratio 16/9 del desktop scalerà perfettamente in automatico */
+  }
+
+  /* Rimuove i bordi neri spessi dallo slider su mobile se li avevi messi */
+  .slider-container {
+    border: none; 
+    border-radius: 0; /* Rende la foto bella squadrata a filo schermo */
+  }
+
+  /* 3. Spazi per i testi del Brief */
+  .project-info {
+    width: 100%;
+    margin-top: 2rem;
+    gap: 1.5rem; /* Riduciamo la distanza tra i paragrafi */
+  }
+
+  .project-info h2 {
+    font-size: 1.3rem; 
+  }
+
+  .project-info p,
+  .project-info ul {
+    font-size: 16px; /* Misura magica per la leggibilità su telefono */
+    line-height: 1.5;
+  }
+
+  /* 4. Griglia Style Frames: da 2 colonne a 1 colonna impilata */
+  .frames-grid {
+    display: flex;
+    flex-direction: column; /* Le foto si mettono in colonna */
+    gap: 1.5rem; /* Spazio tra una foto e l'altra */
+    width: 100%;
+  }
+
+  .frame-item {
+    width: 100%;
+  }
+
+  .frame-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0; /* Come sopra, squadrata sta meglio su mobile */
+  }
+
+  /* Spazio e dimensione per il numerino sopra la foto */
+  .frame-number {
+    font-size: 14px;
+    margin-bottom: 4px;
   }
 }
+
+
