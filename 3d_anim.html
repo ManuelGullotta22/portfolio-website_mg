@@ -23,13 +23,12 @@
           <li><a href="news.html">NEWS</a></li>
         </ul>
       </nav>
-       <div class="mobile-hamburger" id="hamburger-btn" aria-label="Apri Menu">
+      <div class="mobile-hamburger" id="hamburger-btn" aria-label="Apri Menu">
         <span class="burger-line"></span>
         <span class="burger-line"></span>
         <span class="burger-line"></span>
       </div>
 
-      <!-- 2. Il menu a comparsa (il box nero) -->
       <nav class="mobile-dropdown" id="mobile-menu">
         <div class="dropdown-separator"></div>
         <ul>
@@ -46,13 +45,10 @@
     </header>
 
     <main>
-      <!-- INTESTAZIONE PROGETTO -->
       <section class="project-header">
         <h1 class="project-title">3D animation - NABA - 2026</h1>
       </section>
 
-      <!-- HERO MEDIA (Video/Animazione Principale) -->
-      <!-- HERO MEDIA (Video Nativo Ottimizzato) -->
       <section class="project-hero-media">
         <video
           class="media-main"
@@ -64,7 +60,7 @@
           Il tuo browser non supporta il tag video.
         </video>
       </section>
-      <!-- INFO PROGETTO (Testi) -->
+
       <section class="project-info">
         <div class="info-block">
           <h2>Brief</h2>
@@ -108,12 +104,11 @@
           </ul>
         </div>
       </section>
-      <!-- GRIGLIA STYLE FRAMES -->
+
       <section class="project-style-frames">
         <h2>Style frame</h2>
 
         <div class="frames-grid">
-          <!-- Frame 1 -->
           <div class="frame-item">
             <span class="frame-number">1</span>
             <img
@@ -123,7 +118,6 @@
             />
           </div>
 
-          <!-- Frame 2 -->
           <div class="frame-item">
             <span class="frame-number">2</span>
             <img
@@ -133,7 +127,6 @@
             />
           </div>
 
-          <!-- Frame 3 -->
           <div class="frame-item">
             <span class="frame-number">3</span>
             <img
@@ -143,7 +136,6 @@
             />
           </div>
 
-          <!-- Frame 4 -->
           <div class="frame-item">
             <span class="frame-number">4</span>
             <img
@@ -154,16 +146,14 @@
           </div>
         </div>
       </section>
-      <!-- NEXT PROJECT LINK -->
+
       <div class="next-project-container">
         <a href="her.html" class="next-project-link"> Next Work &rarr; </a>
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-container">
-        <!-- Colonna Sinistra: Navigazione -->
         <div class="footer-left">
           <nav class="footer-nav">
             <ul>
@@ -175,12 +165,9 @@
           </nav>
         </div>
 
-        <!-- Linea Verticale Centrale -->
         <div class="footer-separator"></div>
 
-        <!-- Colonna Destra: Icone Social -->
         <div class="footer-right">
-          <!-- Ricordati di esportare queste 5 icone da Figma come SVG! -->
           <a
             href="https://www.linkedin.com/in/manuel-gullotta"
             target="_blank"
@@ -214,13 +201,13 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
   <script src="js/script.js"></script>
-   <script>
-      const hamburgerBtn = document.getElementById("hamburger-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
+  <script>
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-      hamburgerBtn.addEventListener("click", () => {
-        hamburgerBtn.classList.toggle("is-active");
-        mobileMenu.classList.toggle("is-open");
-      });
-    </script>
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("is-active");
+      mobileMenu.classList.toggle("is-open");
+    });
+  </script>
 </html>

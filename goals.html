@@ -29,7 +29,6 @@
         <span class="burger-line"></span>
       </div>
 
-      <!-- 2. Il menu a comparsa (il box nero) -->
       <nav class="mobile-dropdown" id="mobile-menu">
         <div class="dropdown-separator"></div>
         <ul>
@@ -46,15 +45,11 @@
     </header>
 
     <main class="goals-page">
-      <!-- 1. HERO LOTTIE -->
       <section class="goals-hero">
-        <!-- Questo è il contenitore dove agganceremo la tua animazione Lottie -->
         <div id="goals-lottie" class="lottie-container"></div>
       </section>
 
-      <!-- 2. TESTO IN 3 BOX CONNESSI -->
       <section class="goals-text-blocks">
-        <!-- Box 1: Focus Creativo e Motion -->
         <div class="goal-box">
           <p>
             Dal punto di vista creativo, supportato dal mio percorso in NABA, ho
@@ -67,10 +62,8 @@
           </p>
         </div>
 
-        <!-- Linea di connessione -->
         <div class="box-connector"></div>
 
-        <!-- Box 2: Background Strategico / Planner -->
         <div class="goal-box">
           <p>
             Questa forte componente visiva si fonda su un rigoroso metodo
@@ -83,10 +76,8 @@
           </p>
         </div>
 
-        <!-- Linea di connessione -->
         <div class="box-connector"></div>
 
-        <!-- Box 3: Obiettivi Futuri -->
         <div class="goal-box">
           <p>
             Guardando ai miei obiettivi, desidero dedicarmi a tempo pieno allo
@@ -99,10 +90,11 @@
         </div>
       </section>
 
-      <!-- 3. RADAR CHART (Grafico Autovalutazione) -->
       <section class="goals-chart-section">
         <h2 class="chart-title">Grafico di autovalutazione</h2>
-        <button id="toggle-radar-btn" class="mobile-radar-btn">Mostra le mie skill</button>
+        <button id="toggle-radar-btn" class="mobile-radar-btn">
+          Mostra le mie skill
+        </button>
 
         <div class="radar-container" id="radar-box">
           <div class="skill-morph-div"></div>
@@ -142,9 +134,7 @@
             class="radar-icon icon-ai"
           />
 
-          <!-- Il grafico SVG vero e proprio -->
           <svg viewBox="0 0 500 500" class="radar-svg">
-            <!-- Linee a raggiera (dal centro ai vertici) -->
             <line x1="250" y1="250" x2="250" y2="50" class="radar-spoke" />
             <line x1="250" y1="250" x2="406" y2="124" class="radar-spoke" />
             <line x1="250" y1="250" x2="445" y2="295" class="radar-spoke" />
@@ -153,7 +143,6 @@
             <line x1="250" y1="250" x2="55" y2="295" class="radar-spoke" />
             <line x1="250" y1="250" x2="94" y2="124" class="radar-spoke" />
 
-            <!-- Ettagono Esterno (Bordo Nero fisso) -->
             <path
               class="radar-outer"
               d="M 250 50 L 406 124 L 445 295 L 337 430 L 163 430 L 55 295 L 94 124 Z"
@@ -161,23 +150,17 @@
           </svg>
         </div>
 
-        <!-- Linea inferiore con i due pallini neri -->
         <div class="bottom-timeline">
           <div class="timeline-dot"></div>
           <div class="timeline-line"></div>
           <div class="timeline-dot"></div>
         </div>
       </section>
-      <section class="goals-chart">
-        <!-- Qui costruiremo il grafico interattivo -->
-      </section>
+      <section class="goals-chart"></section>
     </main>
 
-    <!-- FOOTER -->
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-container">
-        <!-- Colonna Sinistra: Navigazione -->
         <div class="footer-left">
           <nav class="footer-nav">
             <ul>
@@ -189,12 +172,9 @@
           </nav>
         </div>
 
-        <!-- Linea Verticale Centrale -->
         <div class="footer-separator"></div>
 
-        <!-- Colonna Destra: Icone Social -->
         <div class="footer-right">
-          <!-- Ricordati di esportare queste 5 icone da Figma come SVG! -->
           <a
             href="https://www.linkedin.com/in/manuel-gullotta"
             target="_blank"
@@ -228,13 +208,13 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
   <script src="js/script.js"></script>
-      <script>
-      const hamburgerBtn = document.getElementById("hamburger-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
+  <script>
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-      hamburgerBtn.addEventListener("click", () => {
-        hamburgerBtn.classList.toggle("is-active");
-        mobileMenu.classList.toggle("is-open");
-      });
-    </script>
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("is-active");
+      mobileMenu.classList.toggle("is-open");
+    });
+  </script>
 </html>

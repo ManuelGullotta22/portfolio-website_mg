@@ -29,7 +29,6 @@
         <span class="burger-line"></span>
       </div>
 
-      <!-- 2. Il menu a comparsa (il box nero) -->
       <nav class="mobile-dropdown" id="mobile-menu">
         <div class="dropdown-separator"></div>
         <ul>
@@ -45,15 +44,12 @@
       </div>
     </header>
 
-    <!-- CONTENUTO PRINCIPALE WHO -->
     <main class="page-who">
-      <!-- STEP 1: Blocco Hero con Foto e Grafica -->
       <section class="who-hero-section">
         <div class="who-hero-box">
-          <!-- Colonna Sinistra: Etichetta Nera e Foto -->
           <div class="who-profile">
             <div class="black-label">Manuel Gullotta</div>
-            <!-- Sostituisci "manuel.jpg" con il nome reale della tua foto esportata -->
+
             <img
               src="assets/img/Manuel_Gullotta.jpg"
               alt="Manuel Gullotta"
@@ -61,9 +57,7 @@
             />
           </div>
 
-          <!-- Colonna Destra: Grafica SVG -->
           <div class="who-graphic">
-            <!-- Colonna Destra: Grafica SVG -->
             <div class="who-graphic">
               <svg
                 width="926"
@@ -72,7 +66,6 @@
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <!-- Linea principale e diramazioni -->
                 <path
                   class="who-svg-path"
                   d="M0 226.5H633M633 226.5L897 289M633 226.5L704 35.5"
@@ -80,7 +73,6 @@
                   stroke-width="3"
                 />
 
-                <!-- Pallino Superiore -->
                 <circle
                   class="who-svg-dot"
                   cx="699.5"
@@ -89,7 +81,6 @@
                   fill="black"
                 />
 
-                <!-- Pallino Inferiore -->
                 <circle
                   class="who-svg-dot"
                   cx="890.5"
@@ -102,7 +93,7 @@
           </div>
         </div>
       </section>
-      <!-- STEP 2: Testo Biografico -->
+
       <section class="who-bio-section">
         <div class="who-bio-box">
           <p>
@@ -126,23 +117,18 @@
           </p>
         </div>
       </section>
-      <!-- STEP 3: Sezione Programmi -->
+
       <section class="who-programs-section">
-        <!-- Le 3 linee verticali di collegamento -->
         <div class="programs-lines">
           <div class="line-v"></div>
           <div class="line-v"></div>
           <div class="line-v"></div>
         </div>
 
-        <!-- Il blocco con l'etichetta e le icone -->
         <div class="programs-container">
-          <!-- Etichetta Nera -->
           <div class="black-label programs-label">Programmi</div>
 
-          <!-- Box con le icone -->
           <div class="programs-box">
-            <!-- Ricordati di esportare queste icone da Figma in formato SVG -->
             <img src="assets/img/ps.svg" alt="hotoshop" class="software-icon" />
             <img
               src="assets/img/c4d.svg"
@@ -165,7 +151,7 @@
           </div>
         </div>
       </section>
-      <!-- STEP 4: Sezione Goals (Segnaposto per SVG/Lottie) -->
+
       <section class="who-goals-section">
         <a
           id="goals-container"
@@ -173,17 +159,14 @@
           class="goals-box-placeholder"
           aria-label="Vai alla pagina Goals"
         >
-          <!-- Spazio pronto per ospitare il tuo codice vettoriale -->
         </a>
       </section>
-      <!-- NUOVO: Bottone separato, posizionato sotto l'animazione -->
-        <a href="goals.html" class="mobile-goals-btn">Scopri i miei goals</a>
+
+      <a href="goals.html" class="mobile-goals-btn">Scopri i miei goals</a>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-container">
-        <!-- Colonna Sinistra: Navigazione -->
         <div class="footer-left">
           <nav class="footer-nav">
             <ul>
@@ -195,12 +178,9 @@
           </nav>
         </div>
 
-        <!-- Linea Verticale Centrale -->
         <div class="footer-separator"></div>
 
-        <!-- Colonna Destra: Icone Social -->
         <div class="footer-right">
-          <!-- Ricordati di esportare queste 5 icone da Figma come SVG! -->
           <a
             href="https://www.linkedin.com/in/manuel-gullotta"
             target="_blank"
@@ -234,14 +214,14 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
   <script src="js/script.js"></script>
-    <!-- Script Hamburger Menu -->
-    <script>
-      const hamburgerBtn = document.getElementById("hamburger-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
 
-      hamburgerBtn.addEventListener("click", () => {
-        hamburgerBtn.classList.toggle("is-active");
-        mobileMenu.classList.toggle("is-open");
-      });
-    </script>
+  <script>
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("is-active");
+      mobileMenu.classList.toggle("is-open");
+    });
+  </script>
 </html>
